@@ -1,15 +1,15 @@
 
 export const Formulario = () => {
     return (
-        <div className='md:w-1/2 lg:w-2/5 ml-20 '>
+        <div className='md:w-1/2 lg:w-2/5 ml-10 '>
             <h2 className='text-center font-black text-3xl '>Seguimiento Pacientes</h2>
 
-            <p className="text-lg mt-5 text-center mb-10">
+            <p className="text-xl mt-5 text-center mb-10">
                 Añade pacientes y {''}
                 <span className='text-indigo-600 font-bold '>Administralos</span>
             </p>
 
-            <form className="bg-white shadow-md rounded-lg py-10 px-5 mb-10 ">
+            <form className="bg-white shadow-md rounded-xl py-10 px-5 mb-10 ">
                 <div>
                     <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold ">
                         Nombre Mascota

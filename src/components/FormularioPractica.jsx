@@ -1,47 +1,27 @@
 import { useState, useEffect } from "react"
-import { Error } from "./mensajeError";
 
-export const Formulario = ({ pacientes, setPacientes /* paso 4  */}) => {
+export const FormularioPractica = () => {
 
     const [mascota, setMascota]=useState('');
     const [propietario, setPropietario] = useState('');
     const [email, setEmail]= useState('');
     const [fecha,setFecha]=useState('');
-    const [sintomas, setSintomas]= useState('');
+    const [sintomas, setSintomas] = useState('');
 
-    const [error,setError]=useState(false);  /* 2 paso */
+    const [error, setError] = useState(false); /* 2 */
 
+   const handleSubmit=(e)=>{  /* 3 start */
+    e.preventDefault();
+  
 
-    const handleSubmit = (e)=>{  /* 3 star */
-        e.preventDefault();
-
-        //validacion del formulario
-        if ([mascota,propietario,email,fecha,sintomas].includes('')){
-            console.log('campos vacios')
-            setError(true)
-        }else{
-            setError(false)  /* 3 end */
-        }
-            //objeto de paciente 
-            const objetoPaciente= {
-                mascota,
-                propietario,
-                email,
-                fecha,
-                sintomas
-            }
-            //console.log(objetoPaciente)
-
-            setPacientes([...pacientes, objetoPaciente])/* paso 4 */
-        
-            //Reiniciar el formulario que quede sin datos
-            setMascota('')
-            setPropietario('')
-            setEmail('')
-            setFecha('')
-            setSintomas('')
-    }
-
+   //validacion de formulario
+   if ([mascota, propietario, email, fecha, sintomas].includes('')){
+    console.log('campos vacios')
+    setError(true)
+   }else{
+    setError(false)
+   }                                /* 3 end */
+}
 
     return (
         <div className='md:w-1/2 lg:w-2/5 ml-10 mx-10 '>
@@ -53,10 +33,15 @@ export const Formulario = ({ pacientes, setPacientes /* paso 4  */}) => {
             </p>
 
             <form 
-                onSubmit={handleSubmit} /* paso 3 */
+                onSubmit={handleSubmit} /* 3  */
                 className="bg-white shadow-md rounded-xl py-10 px-5 mb-10 ">
                 
-                {error && <Error> <p>Todos los campos son obligatorios</p></Error>  /* paso 2 */} {/*si error es true entonces ejecuta esto*/}
+                {error && /* 2 paso */
+                    <div className='bg-red-700 p-3 rounded-md mb-5' >
+                        <p className=" text-white text-center uppercase font-bold ">Todos los campos son obligatorios</p>
+                    </div> 
+                } {/*si error es true entonces ejecuta esto*/}
+                
                 <div>
                     <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold ">
                         Nombre Mascota 
@@ -134,6 +119,7 @@ export const Formulario = ({ pacientes, setPacientes /* paso 4  */}) => {
                         placeholder="Describe los sintomas"
                         value={sintomas}
                         onChange={(e)=>setSintomas(e.target.value)}
+                        
                     />
                 </div>
 

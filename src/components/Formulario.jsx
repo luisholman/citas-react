@@ -9,6 +9,13 @@ export const Formulario = ({ pacientes, setPacientes /* paso 4  */}) => {
     const [fecha,setFecha]=useState('');
     const [sintomas, setSintomas]= useState('');
 
+    const generarId=()=>{
+        const random= Math.random().toString(36).substr(2);
+        const fecha= Date.now().toString(36);
+
+        return random + fecha
+    }
+
     const [error,setError]=useState(false);  /* 2 paso */
 
 
@@ -21,15 +28,17 @@ export const Formulario = ({ pacientes, setPacientes /* paso 4  */}) => {
             setError(true)
         }else{
             setError(false)  /* 3 end */
-        }
+        
             //objeto de paciente 
             const objetoPaciente= {
                 mascota,
                 propietario,
                 email,
                 fecha,
-                sintomas
+                sintomas,
+                id:generarId()
             }
+        
             //console.log(objetoPaciente)
 
             setPacientes([...pacientes, objetoPaciente])/* paso 4 */
@@ -40,8 +49,9 @@ export const Formulario = ({ pacientes, setPacientes /* paso 4  */}) => {
             setEmail('')
             setFecha('')
             setSintomas('')
+        }
     }
-
+            
 
     return (
         <div className='md:w-1/2 lg:w-2/5 ml-10 mx-10 '>

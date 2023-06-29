@@ -20,6 +20,7 @@ function App() {
       pacientes={pacientes}
       setPacientes={setPacientes}/* paso 4 */
       paciente={paciente}   /*7. paso para mostrar lo editado .1*/
+      setPaciente={setPaciente} /*10.   .6*/
       />
    
       <ListadoPacientes

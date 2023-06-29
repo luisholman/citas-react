@@ -3,6 +3,7 @@ import { Error } from "./mensajeError";
 
 export const Formulario = ({ pacientes, setPacientes, /* paso 4  */
     paciente/*7. paso para mostrar lo editado .2*/
+    ,setPaciente/*10.   .7*/
 }) => {
 
     const [mascota, setMascota]=useState('');
@@ -53,12 +54,32 @@ export const Formulario = ({ pacientes, setPacientes, /* paso 4  */
                 email,
                 fecha,
                 sintomas,
-                id:generarId()
+                //id:generarId()  /*10. eliminamos este codigo .3 */
             }
+
+            /*10. para arreglar errores al momento de oprimir el boton de editar .1 */
+            if(paciente.id ){
+                //editando el registro
+                /*10. creamos este codigo inicio .5 */
+                objetoPaciente.id=paciente.id
+                
+                const pacientesActualizados = pacientes.map ( pacienteState =>pacienteState.id ===
+                    paciente.id ? objetoPaciente : pacienteState )
+
+                    setPacientes(pacientesActualizados)
+                /*10. creamos este codigo fin.5 */
+                    setPaciente ({})/*10.   .7*/
+
+            } else{
+                //nuevo  registro
+                objetoPaciente.id = generarId();/*10. creamos este codigo .4 */
+                setPacientes([...pacientes, objetoPaciente]) /*10 se paso de abjo para aqui  .2 */
+            }
+
         
             //console.log(objetoPaciente)
 
-            setPacientes([...pacientes, objetoPaciente])/* paso 4 */
+            //setPacientes([...pacientes, objetoPaciente])/* paso 4 */ /*10. se paso para el if    .2*/
         
             //Reiniciar el formulario que quede sin datos
             setMascota('')
@@ -168,7 +189,7 @@ export const Formulario = ({ pacientes, setPacientes, /* paso 4  */
                     type="submit"
                      className='
                      bg-indigo-500 w-full p-3 mt-5 text-white uppercase font-bold rounded-lg hover:bg-indigo-700 cursor-pointer transition-all'
-                    value="Agregar Paciente"
+                    value={paciente.id ? 'Editar Paciente': 'Agregar Paciente'}/*9. para que cambie la informacion que se encuenrta en el boton */
                 />
 
             </form>

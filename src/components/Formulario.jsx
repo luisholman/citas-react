@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect/*8. useEffect paso1 */ } from "react"
 import { Error } from "./mensajeError";
 
-export const Formulario = ({ pacientes, setPacientes /* paso 4  */}) => {
+export const Formulario = ({ pacientes, setPacientes, /* paso 4  */
+    paciente/*7. paso para mostrar lo editado .2*/
+}) => {
 
     const [mascota, setMascota]=useState('');
     const [propietario, setPropietario] = useState('');
@@ -9,15 +11,30 @@ export const Formulario = ({ pacientes, setPacientes /* paso 4  */}) => {
     const [fecha,setFecha]=useState('');
     const [sintomas, setSintomas]= useState('');
 
+    const [error,setError]=useState(false);  /* 2 paso */
+
+    //para useEfeccts /*8. paso2 */
+    useEffect( ()=>{
+        if( Object.keys(paciente).length>0){
+
+            setMascota(paciente.mascota)//para useEfeccts /*8. pasopara que se vea en el input los datos */
+            setPropietario(paciente.propietario)//para useEfeccts /*8. pasopara que se vea en el input los datos */
+            setEmail(paciente.email)//para useEfeccts /*8. pasopara que se vea en el input los datos */
+            setFecha(paciente.fecha)//para useEfeccts /*8. pasopara que se vea en el input los datos */
+            setSintomas(paciente.sintomas)//para useEfeccts /*8. pasopara que se vea en el input los datos */
+        }
+    }, [paciente])
+
+
+
+
+
     const generarId=()=>{
         const random= Math.random().toString(36).substr(2);
         const fecha= Date.now().toString(36);
 
         return random + fecha
     }
-
-    const [error,setError]=useState(false);  /* 2 paso */
-
 
     const handleSubmit = (e)=>{  /* 3 star */
         e.preventDefault();

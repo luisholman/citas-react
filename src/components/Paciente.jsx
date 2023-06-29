@@ -1,7 +1,9 @@
 
-export const Paciente = ({ paciente, setPaciente/*setPaciente paso para editar btn .5*/ }) => {
+
+export const Paciente = ({ paciente, setPaciente/*6.setPaciente paso para editar btn .5*/ }) => {
     //console.log(paciente)
 
+   
     const { mascota, propietario, email, fecha, sintomas } = paciente
 
     return (
@@ -30,7 +32,7 @@ export const Paciente = ({ paciente, setPaciente/*setPaciente paso para editar b
                 <button
                     type="button"
                     className="py-2 px-10 bg-indigo-500 hover:bg-indigo-700 text-white font-bold rounded-lg"
-                    onClick={() => setPaciente(paciente)/* paso para editar btn .6*/}
+                    onClick={() => setPaciente(paciente)/*6. paso para editar btn .6*/}
                 > Editar</button>
 
             <button type="button" className="py-2 px-10 bg-red-500 hover:bg-red-700 text-white font-bold rounded-lg">Eliminar</button>

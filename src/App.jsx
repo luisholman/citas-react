@@ -9,7 +9,7 @@ import { ListadoPacientes } from "./components/ListadoPacientes"
 function App() {
 
   const [pacientes, setPacientes] = useState([]); /* paso 4 */
-  const [paciente, setPaciente]=useState({});/* paso para editar btn .1*/
+  const [paciente, setPaciente]=useState({});/*6. paso para editar btn .1*/
 
   return (
     <div className='container mx-auto pt-20 '>
@@ -19,14 +19,12 @@ function App() {
       <Formulario 
       pacientes={pacientes}
       setPacientes={setPacientes}/* paso 4 */
-
+      paciente={paciente}   /*7. paso para mostrar lo editado .1*/
       />
    
-      
-
       <ListadoPacientes
         pacientes={pacientes}
-        setPaciente={setPaciente}/* paso para editar btn .2*/
+        setPaciente={setPaciente}/*6. paso para editar btn .2*/
       />
       </div>
       

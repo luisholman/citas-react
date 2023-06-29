@@ -9,6 +9,7 @@ import { ListadoPacientes } from "./components/ListadoPacientes"
 function App() {
 
   const [pacientes, setPacientes] = useState([]); /* paso 4 */
+  const [paciente, setPaciente]=useState({});/* paso para editar btn .1*/
 
   return (
     <div className='container mx-auto pt-20 '>
@@ -17,16 +18,15 @@ function App() {
       <div className="mt-12 md:flex ">
       <Formulario 
       pacientes={pacientes}
-      setPacientes={setPacientes}
-      
-      /* paso 4 */
-  
+      setPacientes={setPacientes}/* paso 4 */
+
       />
    
       
 
       <ListadoPacientes
         pacientes={pacientes}
+        setPaciente={setPaciente}/* paso para editar btn .2*/
       />
       </div>
       

@@ -77,9 +77,9 @@ export const Formulario = ({ pacientes, setPacientes, /* paso 4  */
             }
 
         
-            //console.log(objetoPaciente)
+            //FIXME: TODO:console.log(objetoPaciente)
 
-            //setPacientes([...pacientes, objetoPaciente])/* paso 4 */ /*10. se paso para el if    .2*/
+            // setPacientes([...pacientes, objetoPaciente])/* paso 4 */ /*10. se paso para el if    .2*/
         
             //Reiniciar el formulario que quede sin datos
             setMascota('')

@@ -1,5 +1,5 @@
 
-import {useState} from "react" /* paso 4 */
+import {useState, useEffect} from "react" /* paso 4 */
 import { Formulario } from "./components/Formulario"
 import { Header } from "./components/Header"
 import { ListadoPacientes } from "./components/ListadoPacientes"
@@ -8,8 +8,20 @@ import { ListadoPacientes } from "./components/ListadoPacientes"
 
 function App() {
 
-  const [pacientes, setPacientes] = useState([]); /* paso 4 */
+  const [pacientes, setPacientes] = useState([]); /*TODO: paso 4 */
   const [paciente, setPaciente]=useState({});/*6. paso para editar btn .1*/
+  
+  useEffect(()=>{ /*TODO: 12. localStorage 2 */
+    const obtenerLocalStorage=()=>{
+      const pacientesLS = JSON.parse(localStorage.getItem('pacientes')) ?? [];
+      setPacientes(pacientesLS)
+    }
+    obtenerLocalStorage();
+  },[])
+
+  useEffect(()=>{/*TODO: 12. localStorage 1 */
+    localStorage.setItem('pacientes', JSON.stringify(pacientes));
+  }, [pacientes])
 
   const eliminarPaciente = id => {  /*11.    1 */
     const pacientesActualizados=pacientes.filter( paciente => paciente.id !== id)/*11.   7 */

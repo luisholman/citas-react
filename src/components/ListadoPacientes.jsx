@@ -1,7 +1,9 @@
 
 import { Paciente } from "./Paciente"
 
-export const ListadoPacientes = ({ pacientes, setPaciente/*6. se pasa setPaciente paso para editar btn .3*/ }) => {
+export const ListadoPacientes = ({ pacientes, setPaciente,/*6. se pasa setPaciente paso para editar btn .3*/ 
+    eliminarPaciente /*11.   3 */
+}) => {
 
 
 
@@ -22,6 +24,7 @@ export const ListadoPacientes = ({ pacientes, setPaciente/*6. se pasa setPacient
                             key={paciente.id}
                             paciente={paciente}
                             setPaciente={setPaciente}/*6. paso para editar btn .4*/
+                            eliminarPaciente={eliminarPaciente}/*11.   4 */
                         />
                     )
 

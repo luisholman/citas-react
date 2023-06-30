@@ -1,10 +1,21 @@
 
 
-export const Paciente = ({ paciente, setPaciente/*6.setPaciente paso para editar btn .5*/ }) => {
+export const Paciente = ({ paciente, setPaciente,/*6.setPaciente paso para editar btn .5*/
+    eliminarPaciente /*11.   5 */
+}) => {
     //console.log(paciente)
 
    
-    const { mascota, propietario, email, fecha, sintomas } = paciente
+    const { mascota, propietario, email, fecha, sintomas, id /*id 11.   6 */} = paciente
+
+    const handleEliminar=()=>{  /*11.   7 */
+        const respuesta= confirm ('Deseas Eliminar este paciente?')
+
+        if(respuesta){
+            eliminarPaciente(id);
+        }
+
+    }
 
     return (
         <div className="bg-white mt-5 shadow-md px-5 py-10 rounded-xl ">
@@ -35,8 +46,11 @@ export const Paciente = ({ paciente, setPaciente/*6.setPaciente paso para editar
                     onClick={() => setPaciente(paciente)/*6. paso para editar btn .6*/}
                 > Editar</button>
 
-            <button type="button" className="py-2 px-10 bg-red-500 hover:bg-red-700 text-white font-bold rounded-lg">Eliminar</button>
-        </div>
+                <button type="button" className="py-2 px-10 bg-red-500 hover:bg-red-700 text-white font-bold rounded-lg"
+                    /*onClick={ ()=> eliminarPaciente(id)  /*11.   6 }*/
+                    onClick={ handleEliminar  /*11.   7 */}
+                >Eliminar</button>
+            </div>
             
             </div >
     )
